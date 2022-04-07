@@ -1,6 +1,6 @@
 const theme = {
   colors: {
-    radicalRed: '#FF1D64',
+    radicalRed: '#ff3d64',
     greenCyan: '#339369',
     coral: '#FF7E53',
     seaGreen: '#3AFFCC',

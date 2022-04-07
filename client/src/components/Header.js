@@ -1,11 +1,37 @@
 import React from 'react'
-import styled from 'styled-components'
-import { StyledHeader } from '../styles'
+import { StyledHeader, StyledLinks, Nav, Logo, NavLink } from '../styles'
+
+const navLinks = [
+  {
+    name: 'About',
+    url: '/about',
+  },
+  {
+    name: 'Projects',
+    url: '/jobs',
+  },
+  {
+    name: 'Contact',
+    url: '/contact',
+  },
+]
 
 const Header = () => {
   return (
     <StyledHeader>
-      <h1>Grey Whittenberger</h1>
+      <Logo src='./images/glogo.svg' />
+      <Nav>
+        <StyledLinks>
+          <ol>
+            {navLinks &&
+              navLinks.map(({ url, name }, i) => (
+                <li key={i}>
+                  <NavLink to={url}>{name}</NavLink>
+                </li>
+              ))}
+          </ol>
+        </StyledLinks>
+      </Nav>
     </StyledHeader>
   )
 }
