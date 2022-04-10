@@ -1,0 +1,27 @@
+{
+  "name": "portfolio-v3",
+  "version": "1.0.0",
+  "description": "the third iteration of my personal portfolio",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "server/server",
+    "watch": "nodemon server/server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Grey-Whitt/portfolio-v3.git"
+  },
+  "author": "Grey Whittenberger",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Grey-Whitt/portfolio-v3/issues"
+  },
+  "homepage": "https://github.com/Grey-Whitt/portfolio-v3#readme",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.18.0"
+  }
+}

@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS gw_portfolio;
+CREATE DATABASE gw_portfolio;
