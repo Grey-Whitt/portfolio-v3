@@ -14,10 +14,10 @@ if (process.env.JAWSDB_URL) {
     process.env.DB_PW,
     {
       host: 'localhost',
-      dialect: 'mysql',
-      port: 3306,
+      dialect: 'postgres',
+      port: 5432,
     }
   )
 }
 
-module.exports = sequelize
+export default sequelize
