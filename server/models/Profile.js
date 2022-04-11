@@ -35,6 +35,9 @@ Profile.init(
     linkedin: {
       type: DataTypes.STRING,
     },
+    password: {
+      type: DataTypes.STRING,
+    },
   },
   {
     sequelize,
