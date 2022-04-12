@@ -15,16 +15,29 @@ const getProfile = asyncHandler(async (req, res) => {
 // @access Private
 const createProfile = asyncHandler(async (req, res) => {
   await Profile.destroy()
+
+  const {
+    first_name,
+    last_name,
+    email,
+    phone_number,
+    location,
+    bio,
+    github,
+    linkedin,
+    password,
+  } = req.body
+
   const profile = Profile.create({
-    first_name: req.body.first_name,
-    last_name: req.body.last_name,
-    email: req.body.email,
-    phone_number: req.body.phone_number,
-    location: req.body.location,
-    bio: req.body.bio,
-    github: req.body.github,
-    linkedin: req.body.linkedin,
-    password: req.body.password,
+    first_name,
+    last_name,
+    email,
+    phone_number,
+    location,
+    bio,
+    github,
+    linkedin,
+    password,
   })
 
   res.status(201).json(profile)
@@ -33,12 +46,54 @@ const createProfile = asyncHandler(async (req, res) => {
 // @desc  Fetch profile
 // @route PUT /api/profile
 // @access Private
-const updateProfile = asyncHandler(async (req, res) => {})
+const updateProfile = asyncHandler(async (req, res) => {
+  const updatedProfile = await Profile.update(req.body, {
+    individualHooks: true,
+    where: {
+      id: req.params.id,
+    },
+  })
+
+  if (updatedProfile) {
+    const {
+      id,
+      first_name,
+      last_name,
+      email,
+      phone_number,
+      location,
+      bio,
+      github,
+      linkedin,
+      password,
+    } = updatedProfile
+
+    res.status(201).json({
+      id,
+      first_name,
+      last_name,
+      email,
+      phone_number,
+      location,
+      bio,
+      github,
+      linkedin,
+      password,
+    })
+  } else {
+    res.status(404)
+    throw new Error('Profile not found')
+  }
+})
 
 // @desc  Delete profile
 // @route GET /api/profile
 // @access Private
-const deleteProfile = asyncHandler(async (req, res) => {})
+const deleteProfile = asyncHandler(async (req, res) => {
+  await Profile.destroy()
+
+  res.json({ message: 'Profile deleted' })
+})
 
 // @desc  Create skill
 // @route POST /api/profile/skill
