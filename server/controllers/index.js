@@ -5,4 +5,4 @@ export {
   deleteProfile,
   createSkill,
   deleteSkill,
-} from './profileController'
+} from './profileController.js'

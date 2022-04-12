@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "the third iteration of my personal portfolio",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "server/server",
+    "start": "node server/server",
     "watch": "nodemon server/server"
   },
   "repository": {

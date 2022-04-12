@@ -1,11 +1,11 @@
 import asyncHandler from 'express-async-handler'
-import { Profile } from '../models'
+import { Profile } from '../models/index.js'
 
 // @desc  Fetch profile
 // @route GET /api/profile
 // @access Public
 const getProfile = asyncHandler(async (req, res) => {
-  const profile = Profile.findAll()
+  const profile = await Profile.findAll()
 
   res.json(profile)
 })
@@ -14,37 +14,17 @@ const getProfile = asyncHandler(async (req, res) => {
 // @route POST /api/profile
 // @access Private
 const createProfile = asyncHandler(async (req, res) => {
-  await Profile.destroy()
-
-  const {
-    first_name,
-    last_name,
-    email,
-    phone_number,
-    location,
-    bio,
-    github,
-    linkedin,
-    password,
-  } = req.body
-
-  const profile = Profile.create({
-    first_name,
-    last_name,
-    email,
-    phone_number,
-    location,
-    bio,
-    github,
-    linkedin,
-    password,
+  await Profile.destroy({
+    where: {},
   })
+
+  const profile = await Profile.create({ ...req.body })
 
   res.status(201).json(profile)
 })
 
 // @desc  Fetch profile
-// @route PUT /api/profile
+// @route PUT /api/profile/:id
 // @access Private
 const updateProfile = asyncHandler(async (req, res) => {
   const updatedProfile = await Profile.update(req.body, {
