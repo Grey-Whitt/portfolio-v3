@@ -5,9 +5,27 @@ import { Profile } from '../models/index.js'
 // @route GET /api/profile
 // @access Public
 const getProfile = asyncHandler(async (req, res) => {
-  const profile = await Profile.findAll()
+  const profile = await Profile.findOne()
 
-  res.json(profile)
+  if (profile) {
+    res.json({
+      id: profile.id,
+      firstName: profile.first_name,
+      lastName: profile.last_name,
+      email: profile.email,
+      phoneNumber: profile.phone_number,
+      location: profile.location,
+      bio: profile.bio,
+      github: profile.github,
+      linkedin: profile.linkedin,
+      password: profile.password,
+      createdAt: profile.createdAt,
+      updatedAt: profile.updatedAt,
+    })
+  } else {
+    res.status(404)
+    throw new Error('Profile not found')
+  }
 })
 
 // @desc  Create profile
@@ -18,48 +36,44 @@ const createProfile = asyncHandler(async (req, res) => {
     where: {},
   })
 
-  const profile = await Profile.create({ ...req.body })
+  const profile = await Profile.create(req.body)
 
-  res.status(201).json(profile)
+  res.status(201).json({
+    id: profile.id,
+    firstName: profile.first_name,
+    lastName: profile.last_name,
+    email: profile.email,
+    phoneNumber: profile.phone_number,
+    location: profile.location,
+    bio: profile.bio,
+    github: profile.github,
+    linkedin: profile.linkedin,
+    password: profile.password,
+    createdAt: profile.createdAt,
+    updatedAt: profile.updatedAt,
+  })
 })
 
-// @desc  Fetch profile
+// @desc  Update profile
 // @route PUT /api/profile/:id
 // @access Private
 const updateProfile = asyncHandler(async (req, res) => {
-  const updatedProfile = await Profile.update(req.body, {
-    individualHooks: true,
+  const profile = await Profile.findOne({
     where: {
       id: req.params.id,
     },
   })
 
-  if (updatedProfile) {
-    const {
-      id,
-      first_name,
-      last_name,
-      email,
-      phone_number,
-      location,
-      bio,
-      github,
-      linkedin,
-      password,
-    } = updatedProfile
-
-    res.status(201).json({
-      id,
-      first_name,
-      last_name,
-      email,
-      phone_number,
-      location,
-      bio,
-      github,
-      linkedin,
-      password,
+  if (profile) {
+    const updatedProfile = await Profile.update(req.body, {
+      plain: true,
+      individualHooks: true,
+      where: {
+        id: req.params.id,
+      },
     })
+
+    res.status(201).json(updatedProfile)
   } else {
     res.status(404)
     throw new Error('Profile not found')
@@ -70,7 +84,16 @@ const updateProfile = asyncHandler(async (req, res) => {
 // @route GET /api/profile
 // @access Private
 const deleteProfile = asyncHandler(async (req, res) => {
-  await Profile.destroy()
+  const profile = await Profile.findOne()
+
+  if (profile) {
+    await Profile.destroy({
+      where: {},
+    })
+  } else {
+    res.status(404)
+    throw new Error('Profile not found')
+  }
 
   res.json({ message: 'Profile deleted' })
 })
