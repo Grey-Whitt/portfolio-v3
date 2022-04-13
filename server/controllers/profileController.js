@@ -1,5 +1,5 @@
 import asyncHandler from 'express-async-handler'
-import { Profile } from '../models/index.js'
+import { Profile, Skill } from '../models/index.js'
 
 // @desc  Fetch profile
 // @route GET /api/profile
@@ -36,7 +36,29 @@ const createProfile = asyncHandler(async (req, res) => {
     where: {},
   })
 
-  const profile = await Profile.create(req.body)
+  const {
+    firstName: first_name,
+    lastName: last_name,
+    email,
+    phoneNumber: phone_number,
+    location,
+    bio,
+    github,
+    linkedin,
+    password,
+  } = req.body
+
+  const profile = await Profile.create({
+    first_name,
+    last_name,
+    email,
+    phone_number,
+    location,
+    bio,
+    github,
+    linkedin,
+    password,
+  })
 
   res.status(201).json({
     id: profile.id,
@@ -101,7 +123,9 @@ const deleteProfile = asyncHandler(async (req, res) => {
 // @desc  Create skill
 // @route POST /api/profile/skill
 // @access Private
-const createSkill = asyncHandler(async (req, res) => {})
+const createSkill = asyncHandler(async (req, res) => {
+  await Skill.create()
+})
 
 // @desc  Delete skill
 // @route DELETE /api/profile/skill/:id
