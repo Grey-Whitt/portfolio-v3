@@ -86,14 +86,39 @@ const updateProfile = asyncHandler(async (req, res) => {
     },
   })
 
+  const {
+    firstName: first_name,
+    lastName: last_name,
+    email,
+    phoneNumber: phone_number,
+    location,
+    bio,
+    github,
+    linkedin,
+    password,
+  } = req.body
+
   if (profile) {
-    const updatedProfile = await Profile.update(req.body, {
-      plain: true,
-      individualHooks: true,
-      where: {
-        id: req.params.id,
+    const updatedProfile = await Profile.update(
+      {
+        first_name,
+        last_name,
+        email,
+        phone_number,
+        location,
+        bio,
+        github,
+        linkedin,
+        password,
       },
-    })
+      {
+        plain: true,
+        individualHooks: true,
+        where: {
+          id: req.params.id,
+        },
+      }
+    )
 
     res.status(201).json(updatedProfile)
   } else {
