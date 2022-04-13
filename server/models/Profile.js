@@ -44,6 +44,7 @@ Profile.init(
     modelName: 'Profile',
     freezeTableName: true,
     underscored: true,
+    onDelete: 'cascade',
   }
 )
 

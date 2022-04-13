@@ -5,7 +5,16 @@ import { Profile, Skill } from '../models/index.js'
 // @route GET /api/profile
 // @access Public
 const getProfile = asyncHandler(async (req, res) => {
-  const profile = await Profile.findOne()
+  const profile = await Profile.findOne({
+    include: {
+      model: Skill,
+      attributes: [
+        ['skill_name', 'skillName'],
+        'type',
+        ['profile_id', 'profileId'],
+      ],
+    },
+  })
 
   if (profile) {
     res.json({
@@ -21,6 +30,7 @@ const getProfile = asyncHandler(async (req, res) => {
       password: profile.password,
       createdAt: profile.createdAt,
       updatedAt: profile.updatedAt,
+      skills: profile.Skills,
     })
   } else {
     res.status(404)
@@ -142,14 +152,20 @@ const deleteProfile = asyncHandler(async (req, res) => {
     throw new Error('Profile not found')
   }
 
-  res.json({ message: 'Profile deleted' })
+  res.status(201).res.json({ message: 'Profile deleted' })
 })
 
 // @desc  Create skill
 // @route POST /api/profile/skill
 // @access Private
 const createSkill = asyncHandler(async (req, res) => {
-  await Skill.create()
+  const skill = await Skill.create({
+    skill_name: req.body.skillName,
+    type: req.body.type,
+    profile_id: req.body.profileId,
+  })
+
+  res.status(201).json(skill)
 })
 
 // @desc  Delete skill
