@@ -152,7 +152,7 @@ const deleteProfile = asyncHandler(async (req, res) => {
     throw new Error('Profile not found')
   }
 
-  res.status(201).res.json({ message: 'Profile deleted' })
+  res.status(201).json({ message: 'Profile deleted' })
 })
 
 // @desc  Create skill
@@ -171,7 +171,26 @@ const createSkill = asyncHandler(async (req, res) => {
 // @desc  Delete skill
 // @route DELETE /api/profile/skill/:id
 // @access Private
-const deleteSkill = asyncHandler(async (req, res) => {})
+const deleteSkill = asyncHandler(async (req, res) => {
+  const skill = await Skill.findOne({
+    where: {
+      skill_name: req.params.name,
+    },
+  })
+
+  if (skill) {
+    await Skill.destroy({
+      where: {
+        skill_name: req.params.name,
+      },
+    })
+
+    res.status(201).json({ message: 'Skill deleted' })
+  } else {
+    res.status(404)
+    throw new Error('Skill not found')
+  }
+})
 
 export {
   getProfile,
