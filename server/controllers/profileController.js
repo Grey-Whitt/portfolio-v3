@@ -6,6 +6,19 @@ import { Profile, Skill } from '../models/index.js'
 // @access Public
 const getProfile = asyncHandler(async (req, res) => {
   const profile = await Profile.findOne({
+    attributes: [
+      'id',
+      ['first_name', 'firstName'],
+      ['last_name', 'lastName'],
+      'email',
+      ['phone_number', 'phoneNumber'],
+      'location',
+      'bio',
+      'github',
+      'password',
+      'createdAt',
+      'updatedAt',
+    ],
     include: {
       model: Skill,
       attributes: [
@@ -17,21 +30,7 @@ const getProfile = asyncHandler(async (req, res) => {
   })
 
   if (profile) {
-    res.json({
-      id: profile.id,
-      firstName: profile.first_name,
-      lastName: profile.last_name,
-      email: profile.email,
-      phoneNumber: profile.phone_number,
-      location: profile.location,
-      bio: profile.bio,
-      github: profile.github,
-      linkedin: profile.linkedin,
-      password: profile.password,
-      createdAt: profile.createdAt,
-      updatedAt: profile.updatedAt,
-      skills: profile.Skills,
-    })
+    res.json(profile)
   } else {
     res.status(404)
     throw new Error('Profile not found')
@@ -152,7 +151,7 @@ const deleteProfile = asyncHandler(async (req, res) => {
     throw new Error('Profile not found')
   }
 
-  res.status(201).json({ message: 'Profile deleted' })
+  res.json({ message: 'Profile deleted' })
 })
 
 // @desc  Create skill
@@ -185,7 +184,7 @@ const deleteSkill = asyncHandler(async (req, res) => {
       },
     })
 
-    res.status(201).json({ message: 'Skill deleted' })
+    res.json({ message: 'Skill deleted' })
   } else {
     res.status(404)
     throw new Error('Skill not found')
