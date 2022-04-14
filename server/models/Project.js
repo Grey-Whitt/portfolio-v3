@@ -1,11 +1,11 @@
 import { Model, DataTypes } from 'sequelize'
-import sequelize from '../config/connection'
+import sequelize from '../config/connection.js'
 
 class Project extends Model {}
 
 Project.init(
   {
-    name: {
+    title: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -16,9 +16,6 @@ Project.init(
       type: DataTypes.STRING,
     },
     deployed_link: {
-      type: DataTypes.STRING,
-    },
-    location: {
       type: DataTypes.STRING,
     },
   },

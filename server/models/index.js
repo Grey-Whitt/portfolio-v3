@@ -1,6 +1,6 @@
-import Profile from './Profile'
-import Project from './Project'
-import Skill from './Skill'
+import Profile from './Profile.js'
+import Project from './Project.js'
+import Skill from './Skill.js'
 
 Profile.hasMany(Skill, {
   foreignKey: 'profile_id',

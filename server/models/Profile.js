@@ -1,5 +1,5 @@
 import { Model, DataTypes } from 'sequelize'
-import sequelize from '../config/connection'
+import sequelize from '../config/connection.js'
 
 class Profile extends Model {}
 
@@ -35,12 +35,16 @@ Profile.init(
     linkedin: {
       type: DataTypes.STRING,
     },
+    password: {
+      type: DataTypes.STRING,
+    },
   },
   {
     sequelize,
     modelName: 'Profile',
     freezeTableName: true,
     underscored: true,
+    onDelete: 'cascade',
   }
 )
 
