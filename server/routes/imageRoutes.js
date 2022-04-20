@@ -4,6 +4,10 @@ import multer from 'multer'
 import asyncHandler from 'express-async-handler'
 import express from 'express'
 const router = express.Router()
+import fs from 'fs'
+import util from 'util'
+
+const unlinkFile = util.promisify(fs.unlink)
 
 const storage = multer.diskStorage({
   destination(req, file, cb) {
@@ -42,6 +46,7 @@ const uploadImage = asyncHandler(async (req, res) => {
   const file = req.file
   if (file) {
     const result = await uploadFile(file)
+    await unlinkFile(file.path)
     res.send({ imagePath: `/images/${result.Key}` })
   } else {
     res.status(400)
