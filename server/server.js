@@ -3,6 +3,7 @@ import sequelize from './config/connection.js'
 import { notFound, errorHandler } from './middleware/errorMiddleware.js'
 import profileRoutes from './routes/profileRoutes.js'
 import projectRoutes from './routes/projectRoutes.js'
+import uploadRoutes from './routes/uploadRoutes.js'
 
 const app = express()
 
@@ -11,6 +12,8 @@ app.use(express.json())
 app.use('/api/profile', profileRoutes)
 
 app.use('/api/projects', projectRoutes)
+
+app.use('/api/upload', uploadRoutes)
 
 app.use(notFound)
 
