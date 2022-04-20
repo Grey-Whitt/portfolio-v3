@@ -1,5 +1,5 @@
 import path from 'path'
-import { uploadFile } from '../s3.js'
+import { uploadFile, getFileStream } from '../s3.js'
 import multer from 'multer'
 import asyncHandler from 'express-async-handler'
 import express from 'express'
@@ -42,12 +42,19 @@ const uploadImage = asyncHandler(async (req, res) => {
   const file = req.file
   if (file) {
     const result = await uploadFile(file)
-    res.send(result)
+    res.send({ imagePath: `/images/${result.Key}` })
   } else {
     res.status(400)
   }
 })
 
-router.route('/').post(upload.single('image'), uploadImage)
+const getImage = asyncHandler((req, res) => {
+  const key = req.params.key
+  const readStream = getFileStream(key)
 
+  readStream.pipe(res)
+})
+
+router.route('/').post(upload.single('image'), uploadImage)
+router.route('/:key').get(getImage)
 export default router
