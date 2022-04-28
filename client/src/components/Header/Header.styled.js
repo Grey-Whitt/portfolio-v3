@@ -1,22 +1,11 @@
 import styled from 'styled-components'
 
 export const StyledHeader = styled.header`
-  background-color: ${({ theme }) => theme.colors.charlestonGreen};
+  background-color: ${({ theme }) => theme.colors.jet};
   padding: 40px 0;
-  -webkit-box-shadow: ${({ theme }) => theme.colors.radicalRed} 2px 5px 16px 0px,
-    5px 5px 48px 5px rgba(0, 0, 0, 0);
-  box-shadow: ${({ theme }) => theme.colors.radicalRed} 2px 5px 16px 0px,
-    5px 5px 48px 5px rgba(0, 0, 0, 0);
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  h1 {
-    color: ${({ theme }) => theme.colors.radicalRed};
-    font-weight: 600;
-    font-size: 50px;
-    letter-spacing: 0.1rem;
-  }
 `
 
 export const Nav = styled.nav`
@@ -29,11 +18,10 @@ export const Nav = styled.nav`
 export const NavLink = styled.a`
   font-size: 20px;
   font-family: 'IBM Plex Mono', monospace;
-  color: ${({ theme }) => theme.colors.seaGreen};
+  color: ${({ theme }) => theme.colors.lightGray};
 
   &:hover {
-    color: #1f876c;
-    text-shadow: 4px 3px 15px rgba(255, 29, 100, 1);
+    color: ${({ theme }) => theme.colors.accent};
     transition: 0.2s;
     cursor: pointer;
   }
@@ -41,9 +29,6 @@ export const NavLink = styled.a`
 export const StyledLinks = styled.div`
   display: flex;
   align-items: center;
-  @media (max-width: 768px) {
-    display: none;
-  }
   ol {
     display: flex;
     justify-content: space-between;
@@ -61,7 +46,16 @@ export const StyledLinks = styled.div`
   }
 `
 
-export const Logo = styled.img`
-  height: 6rem;
+export const Logo = styled.div`
+  justify-content: center;
+  align-items: center;
+  display: flex;
   margin-left: 1rem;
+  color: ${({ theme }) => theme.colors.lightGray};
+  font-weight: 600;
+  font-size: 50px;
+
+  h1 {
+    margin: 0;
+  }
 `

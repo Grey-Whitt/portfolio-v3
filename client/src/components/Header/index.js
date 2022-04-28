@@ -19,7 +19,9 @@ const navLinks = [
 const Header = () => {
   return (
     <StyledHeader>
-      <Logo src='./images/glogo.svg' />
+      <Logo>
+        <h1>G</h1>
+      </Logo>
       <Nav>
         <StyledLinks>
           <ol>
