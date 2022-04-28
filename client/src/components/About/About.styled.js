@@ -8,6 +8,7 @@ export const AboutContainer = styled.div`
   justify-content: center !important;
   /* box-shadow: 0 5px 5px 0 rgb(181 181 181 / 50%), 0 0 0 1px #b5b5b5; */
   box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.34);
+  height: 50rem;
 `
 
 export const AboutLeft = styled.div`
