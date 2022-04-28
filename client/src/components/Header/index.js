@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyledHeader, StyledLinks, Nav, Logo, NavLink } from '../styles'
+import { StyledHeader, StyledLinks, Nav, Logo, NavLink } from './Header.styled'
 
 const navLinks = [
   {
