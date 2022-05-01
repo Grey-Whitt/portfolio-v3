@@ -8,7 +8,11 @@ const navLinks = [
   },
   {
     name: 'Projects',
-    url: '/jobs',
+    url: '/projects',
+  },
+  {
+    name: 'Resume',
+    url: '/resume',
   },
   {
     name: 'Contact',
