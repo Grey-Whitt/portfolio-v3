@@ -1,10 +1,13 @@
 import React from 'react'
 import About from '../../components/About'
+import { Container } from '../../styles'
 
 const HomeScreen = () => {
   return (
     <>
-      <About />
+      <Container>
+        <About />
+      </Container>
     </>
   )
 }
