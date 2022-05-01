@@ -15,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   p {
-    opacity: 0.6;
+    opacity: 0.9;
     line-height: 1.5;
   }
 
