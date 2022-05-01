@@ -7,6 +7,11 @@ export const StyledHeader = styled.header`
   align-items: center;
   justify-content: space-between;
   margin-bottom: 16px;
+  overflow: hidden;
+
+  @media (max-width: 500px) {
+    display: block;
+  }
 `
 
 export const Nav = styled.nav`
@@ -30,6 +35,9 @@ export const NavLink = styled.a`
 export const StyledLinks = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
+  margin: auto;
+
   ol {
     display: flex;
     justify-content: space-between;
@@ -37,8 +45,14 @@ export const StyledLinks = styled.div`
     padding: 0;
     margin: 0;
     list-style: none;
+
+    @media (max-width: 500px) {
+      display: block;
+      text-align: center;
+    }
+
     li {
-      margin: 0 5px;
+      margin: 10px 5px;
       position: relative;
       a {
         padding: 10px;
@@ -55,6 +69,10 @@ export const Logo = styled.div`
   color: ${({ theme }) => theme.colors.lightGray};
   font-weight: 600;
   font-size: 50px;
+
+  @media (max-width: 500px) {
+    margin: 0;
+  }
 
   h1 {
     margin: 0;

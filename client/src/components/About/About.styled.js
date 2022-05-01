@@ -10,10 +10,9 @@ export const AboutContainer = styled.div`
   border-radius: 30px;
   background-color: ${({ theme }) => theme.colors.jet};
 
-  @media (max-width: 1780px) {
+  @media (max-width: 1300px) {
     flex-direction: column;
     align-items: center;
-    max-width: 80%;
     margin: auto;
   }
 `
@@ -24,7 +23,7 @@ export const AboutLeft = styled.div`
   color: ${({ theme }) => theme.colors.lightGray};
   border-radius: 30px 0 0 30px;
 
-  @media (max-width: 1780px) {
+  @media (max-width: 1300px) {
     border-radius: 30px 30px 0 0;
   }
 
@@ -52,11 +51,19 @@ export const AboutRight = styled.div`
 
   .bio {
     padding: 40px;
+
+    @media (max-width: 500px) {
+      padding: 20px;
+    }
   }
 
   p {
     color: ${({ theme }) => theme.colors.jet} !important;
     font-size: 1.3rem;
+
+    @media (max-width: 500px) {
+      font-size: 16px;
+    }
   }
 
   h2 {
