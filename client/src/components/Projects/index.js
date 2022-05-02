@@ -1,5 +1,6 @@
 import React from 'react'
 import { ProjectsContainer, Project } from './Projects.styled'
+import { BsGithub } from 'react-icons/bs'
 
 const projects = [
   {
@@ -51,7 +52,9 @@ const Projects = () => {
             target='_blank'
             rel='noreferrer'
           >
-            <img src='/images/sampleproject.png' alt={project.title} />
+            <div className='picContainer'>
+              <img src='/images/sampleproject.png' alt={project.title} />
+            </div>
           </a>
           <h2 className='grid2'>
             <a href={project.deployed_link} target='_blank' rel='noreferrer'>
@@ -64,7 +67,7 @@ const Projects = () => {
             target='_blank'
             rel='noreferrer'
           >
-            G
+            <BsGithub className='ghIcon' size={25} />
           </a>
           <p className='grid4'>{project.description}</p>
         </Project>

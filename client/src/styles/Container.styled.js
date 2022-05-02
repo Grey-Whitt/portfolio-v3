@@ -2,13 +2,16 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
+  padding-right: 40px;
+  padding-left: 40px;
+  margin-top: 5rem;
   margin-right: auto;
   margin-left: auto;
 
-  @media (min-width: 576px) {
-    max-width: 540px;
+  @media (max-width: 576px) {
+    padding-right: 10px !important;
+    padding-left: 10px !important;
+    max-width: 550px;
   }
   @media (min-width: 768px) {
     max-width: 720px;
