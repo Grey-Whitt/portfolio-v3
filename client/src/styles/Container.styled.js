@@ -5,6 +5,7 @@ export const Container = styled.div`
   padding-right: 40px;
   padding-left: 40px;
   margin-top: 5rem;
+  margin-bottom: 5rem;
   margin-right: auto;
   margin-left: auto;
 
@@ -22,4 +23,10 @@ export const Container = styled.div`
   @media (min-width: 1200px) {
     max-width: 1500px;
   }
+`
+
+export const Center = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `

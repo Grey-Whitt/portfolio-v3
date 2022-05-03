@@ -10,7 +10,7 @@ const GlobalStyle = createGlobalStyle`
     background: ${({ theme }) => theme.colors.lightGray};
     color: ${({ theme }) => theme.colors.jet};
     font-size: 1.15em;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif !important;
     margin: 0;
   }
 

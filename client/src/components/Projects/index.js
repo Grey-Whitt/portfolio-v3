@@ -1,5 +1,6 @@
 import React from 'react'
-import { ProjectsContainer, Project } from './Projects.styled'
+import { ProjectsContainer, Project, ButtonLink } from './Projects.styled'
+import { Center } from '../../styles'
 import { BsGithub } from 'react-icons/bs'
 
 const projects = [
@@ -43,36 +44,49 @@ const projects = [
 
 const Projects = () => {
   return (
-    <ProjectsContainer>
-      {projects.map((project) => (
-        <Project>
-          <a
-            className='grid1'
-            href={project.deployed_link}
-            target='_blank'
-            rel='noreferrer'
-          >
-            <div className='picContainer'>
-              <img src='/images/sampleproject.png' alt={project.title} />
-            </div>
-          </a>
-          <h2 className='grid2'>
-            <a href={project.deployed_link} target='_blank' rel='noreferrer'>
-              {project.title}
+    <>
+      <ProjectsContainer>
+        {projects.map((project) => (
+          <Project>
+            <a
+              className='grid1'
+              href={project.deployed_link}
+              target='_blank'
+              rel='noreferrer'
+            >
+              <div className='picContainerBackground'>
+                <div className='picContainer'>
+                  <img src='/images/sampleproject.png' alt={project.title} />
+                </div>
+              </div>
             </a>
-          </h2>
-          <a
-            className='grid3'
-            href={project.repo_link}
-            target='_blank'
-            rel='noreferrer'
-          >
-            <BsGithub className='ghIcon' size={25} />
-          </a>
-          <p className='grid4'>{project.description}</p>
-        </Project>
-      ))}
-    </ProjectsContainer>
+            <h2 className='grid2'>
+              <a href={project.deployed_link} target='_blank' rel='noreferrer'>
+                {project.title}
+              </a>
+            </h2>
+            <a
+              className='grid3'
+              href={project.repo_link}
+              target='_blank'
+              rel='noreferrer'
+            >
+              <BsGithub className='ghIcon' size={25} />
+            </a>
+            <p className='grid4'>{project.description}</p>
+          </Project>
+        ))}
+      </ProjectsContainer>
+      <Center>
+        <ButtonLink
+          href='https://github.com/Grey-Whitt?tab=repositories'
+          target='_blank'
+          rel='noreferrer'
+        >
+          <button class='button'>More Projects</button>
+        </ButtonLink>
+      </Center>
+    </>
   )
 }
 
