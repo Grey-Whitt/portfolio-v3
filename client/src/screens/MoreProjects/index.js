@@ -2,23 +2,47 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Repo } from './MoreProjects.styled'
 import { format } from 'date-fns'
+import parse from 'parse-link-header'
+import { BsChevronLeft, BsChevronRight } from 'react-icons/bs'
 
 const MoreProjects = () => {
   const [repos, setRepos] = useState([])
 
-  const getRepos = async () => {
+  const [next, setNext] = useState('')
+
+  const [prev, setPrev] = useState('')
+
+  const [page, setPage] = useState(1)
+
+  const getRepos = async (link) => {
     try {
-      const { data } = await axios.get(
-        'https://api.github.com/users/grey-whitt/repos?page=1&per_page=10'
-      )
+      setPage(link.split('s?page=')[1].substr(0, 1))
+
+      const { data, headers } = await axios.get(link)
+
+      const links = parse(headers.link)
+
+      if (links.next === undefined) {
+        setNext(links.first.url)
+        console.log(next)
+      } else {
+        setNext(links.next.url)
+      }
+
+      if (links.prev === undefined) {
+        setPrev(links.last.url)
+      } else {
+        setPrev(links.prev.url)
+      }
+
       setRepos(data)
     } catch (error) {
-      window.alert(error)
+      console.log(error)
     }
   }
 
   useEffect(() => {
-    getRepos()
+    getRepos('https://api.github.com/users/grey-whitt/repos?page=1&per_page=10')
   }, [])
 
   return (
@@ -58,6 +82,16 @@ const MoreProjects = () => {
             ))}
           </tbody>
         </table>
+
+        <div className='buttons'>
+          <button onClick={() => getRepos(prev)}>
+            <BsChevronLeft size={30} className='arrow' />
+          </button>
+          {page}
+          <button onClick={() => getRepos(next)}>
+            <BsChevronRight size={30} className='arrow' />
+          </button>
+        </div>
       </Repo>
     </>
   )
