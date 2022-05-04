@@ -2,8 +2,9 @@ import React from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Header from './components/Header'
 import { ThemeProvider } from 'styled-components'
-import { GlobalStyle, theme } from './styles'
+import { GlobalStyle, theme, Container } from './styles'
 import HomeScreen from './screens/HomeScreen'
+import MoreProjects from './screens/MoreProjects'
 
 const App = () => {
   return (
@@ -11,11 +12,14 @@ const App = () => {
       <GlobalStyle />
       <Router>
         <Header />
-        <main>
-          <Routes>
-            <Route path='/' element={<HomeScreen />} />
-          </Routes>
-        </main>
+        <Container>
+          <main>
+            <Routes>
+              <Route path='/' element={<HomeScreen />} />
+              <Route path='/moreprojects' element={<MoreProjects />} />
+            </Routes>
+          </main>
+        </Container>
       </Router>
     </ThemeProvider>
   )

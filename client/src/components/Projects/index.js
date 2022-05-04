@@ -46,8 +46,8 @@ const Projects = () => {
   return (
     <>
       <ProjectsContainer>
-        {projects.map((project) => (
-          <Project>
+        {projects.map((project, i) => (
+          <Project key={i}>
             <a
               className='grid1'
               href={project.deployed_link}
@@ -78,12 +78,8 @@ const Projects = () => {
         ))}
       </ProjectsContainer>
       <Center>
-        <ButtonLink
-          href='https://github.com/Grey-Whitt?tab=repositories'
-          target='_blank'
-          rel='noreferrer'
-        >
-          <button class='button'>More Projects</button>
+        <ButtonLink href='/moreprojects' target='_blank' rel='noreferrer'>
+          <button className='button'>More Projects</button>
         </ButtonLink>
       </Center>
     </>

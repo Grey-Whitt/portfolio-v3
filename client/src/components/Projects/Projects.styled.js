@@ -39,6 +39,7 @@ export const Project = styled.div`
 
   .ghIcon:hover {
     color: ${({ theme }) => theme.colors.accent};
+    transform: scale(1.15);
     transition: 0.15s;
   }
 
