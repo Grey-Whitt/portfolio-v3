@@ -1,13 +1,12 @@
 import React from 'react'
 import About from '../../components/About'
-import { Container } from '../../styles'
+import Projects from '../../components/Projects'
 
 const HomeScreen = () => {
   return (
     <>
-      <Container>
-        <About />
-      </Container>
+      <About />
+      <Projects />
     </>
   )
 }

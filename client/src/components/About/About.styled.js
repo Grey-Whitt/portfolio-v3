@@ -36,6 +36,9 @@ export const AboutLeft = styled.div`
   }
 
   .orangeBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: 5px solid ${({ theme }) => theme.colors.accent};
     border-radius: 20px;
     margin: 20px;
