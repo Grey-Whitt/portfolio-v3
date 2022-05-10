@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import axios from 'axios'
 import { ContactForm, FormContainer, ContactSection } from './Contact.styled'
 import { Center } from '../../styles'
@@ -15,29 +15,34 @@ const Contact = () => {
 
   const [errorMessage, setErrorMessage] = useState('')
 
+  const emailInput = useRef(null)
+
   const handleChange = (e) => {
-    if (e.target.id === 'email') {
-      const isValid = validateEmail(e.target.value)
-      if (!isValid) {
-        setErrorMessage('Your email is invalid.')
-      } else {
-        setErrorMessage('')
-      }
+    if (!e.target.value.length) {
+      setErrorMessage(`${e.target.id} is required.`)
     } else {
-      if (!e.target.value.length) {
-        setErrorMessage(`${e.target.id} is required.`)
-      } else {
-        setErrorMessage('')
-      }
+      setErrorMessage('')
     }
+
     if (!errorMessage) {
       setFormState({ ...formState, [e.target.id]: e.target.value })
     }
   }
 
   const handleSubmit = async (e) => {
-    if (name && email && message) {
-      e.preventDefault()
+    e.preventDefault()
+
+    const checkEmail = emailInput?.current?.value
+    if (checkEmail) {
+      const isValid = validateEmail(checkEmail)
+      if (!isValid) {
+        setErrorMessage('Your email is invalid.')
+      } else {
+        setErrorMessage('')
+      }
+    }
+
+    if (!errorMessage && name && email && message) {
       setStatus('Sending...')
 
       const details = {
@@ -62,8 +67,14 @@ const Contact = () => {
       } catch (error) {
         setErrorMessage(error)
       }
+
       setStatus('Submit')
-    } else {
+      setFormState({
+        name: '',
+        email: '',
+        message: '',
+      })
+    } else if (!errorMessage) {
       setErrorMessage('Missing field!')
     }
   }
@@ -80,7 +91,7 @@ const Contact = () => {
               id='name'
               required
               placeholder='Name'
-              defaultValue={name}
+              value={name}
               onChange={handleChange}
               onBlur={handleChange}
             />
@@ -92,9 +103,10 @@ const Contact = () => {
               id='email'
               required
               placeholder='Email'
-              defaultValue={email}
+              value={email}
               onChange={handleChange}
               onBlur={handleChange}
+              ref={emailInput}
             />
           </div>
           <div className='message'>
@@ -103,7 +115,7 @@ const Contact = () => {
               id='message'
               required
               placeholder='Message'
-              defaultValue={message}
+              value={message}
               onChange={handleChange}
               onBlur={handleChange}
             />
