@@ -39,4 +39,28 @@ export const ResumeContainer = styled.div`
     flex: 0 0 50%;
     max-width: 50%;
   }
+
+  @media (max-width: 1000px) {
+    .skills {
+      border-bottom: 1px solid #bdbdbd;
+      border-right: none;
+    }
+
+    .beSkills {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+
+    .feSkills {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+`
+export const ResumeLink = styled.p`
+  font-size: 1.3rem;
+  a {
+    text-decoration: none;
+    color: ${({ theme }) => theme.colors.accent};
+  }
 `
