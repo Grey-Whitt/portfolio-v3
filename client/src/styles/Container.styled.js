@@ -4,7 +4,7 @@ export const Container = styled.div`
   width: 100%;
   padding-right: 40px;
   padding-left: 40px;
-  margin-top: 5rem;
+  margin-top: 0;
   margin-bottom: 5rem;
   margin-right: auto;
   margin-left: auto;
@@ -29,4 +29,13 @@ export const Center = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+`
+
+export const Section = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  min-height: 100vh;
+  padding: 0px;
 `

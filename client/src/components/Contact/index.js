@@ -80,7 +80,7 @@ const Contact = () => {
   }
 
   return (
-    <ContactSection>
+    <ContactSection id='contact'>
       <FormContainer>
         <h2>Contact Me</h2>
         <ContactForm>

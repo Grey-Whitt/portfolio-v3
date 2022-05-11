@@ -12,14 +12,15 @@ const App = () => {
       <GlobalStyle />
       <Router>
         <Header />
-        <Container>
-          <main>
+
+        <main>
+          <Container>
             <Routes>
               <Route path='/' element={<HomeScreen />} />
               <Route path='/moreprojects' element={<MoreProjects />} />
             </Routes>
-          </main>
-        </Container>
+          </Container>
+        </main>
       </Router>
     </ThemeProvider>
   )

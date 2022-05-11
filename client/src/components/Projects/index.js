@@ -45,7 +45,7 @@ const projects = [
 const Projects = () => {
   return (
     <>
-      <ProjectsContainer>
+      <ProjectsContainer id='projects'>
         {projects.map((project, i) => (
           <Project key={i}>
             <a
