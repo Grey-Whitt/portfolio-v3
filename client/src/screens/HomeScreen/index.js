@@ -9,8 +9,8 @@ const HomeScreen = () => {
     <>
       <About />
       <Projects />
-      <Contact />
       <Resume />
+      <Contact />
     </>
   )
 }

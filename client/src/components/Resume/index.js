@@ -27,7 +27,7 @@ const Resume = () => {
 
   return (
     <>
-      <ResumeContainer>
+      <ResumeContainer id='resume'>
         <div className='beSkills skills'>
           <BsTerminal size={60} color='#FF7F11' />
           <div className='skillsTitle'>Back-end proficiencies</div>

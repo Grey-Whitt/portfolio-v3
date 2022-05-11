@@ -2,12 +2,22 @@ import styled from 'styled-components'
 
 export const StyledHeader = styled.header`
   background-color: ${({ theme }) => theme.colors.jet};
-  padding: 40px 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 16px;
   overflow: hidden;
+
+  .g {
+    text-decoration: none;
+    color: inherit;
+
+    &:hover {
+      color: ${({ theme }) => theme.colors.accent};
+      transition: 0.2s;
+      cursor: pointer;
+    }
+  }
 
   @media (max-width: 500px) {
     display: block;
@@ -21,10 +31,11 @@ export const Nav = styled.nav`
   padding: 0 20px;
 `
 
-export const NavLink = styled.a`
+export const NavLink = styled.span`
   font-size: 20px;
   font-family: 'IBM Plex Mono', monospace;
   color: ${({ theme }) => theme.colors.lightGray};
+  padding: 10px;
 
   &:hover {
     color: ${({ theme }) => theme.colors.accent};
@@ -54,9 +65,6 @@ export const StyledLinks = styled.div`
     li {
       margin: 10px 5px;
       position: relative;
-      a {
-        padding: 10px;
-      }
     }
   }
 `

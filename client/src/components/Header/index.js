@@ -1,42 +1,55 @@
 import React from 'react'
 import { StyledHeader, StyledLinks, Nav, Logo, NavLink } from './Header.styled'
-
+import { Link } from 'react-scroll'
 const navLinks = [
   {
     name: 'About',
-    url: '/about',
+    url: 'about',
   },
   {
     name: 'Projects',
-    url: '/projects',
+    url: 'projects',
   },
   {
     name: 'Resume',
-    url: '/resume',
+    url: 'resume',
   },
   {
     name: 'Contact',
-    url: '/contact',
+    url: 'contact',
   },
 ]
 
 const Header = () => {
+  let homeScreen = true
+
+  if (document.location.pathname !== '/') {
+    homeScreen = false
+  }
   return (
     <StyledHeader>
       <Logo>
-        <h1>G</h1>
+        <a className='g' href='/'>
+          <h1>G</h1>
+        </a>
       </Logo>
       <Nav>
-        <StyledLinks>
-          <ol>
-            {navLinks &&
-              navLinks.map(({ url, name }, i) => (
-                <li key={i}>
-                  <NavLink to={url}>{name}</NavLink>
-                </li>
-              ))}
-          </ol>
-        </StyledLinks>
+        {homeScreen && (
+          <StyledLinks>
+            <ol>
+              {navLinks &&
+                navLinks.map(({ url, name }, i) => (
+                  <li key={i}>
+                    <NavLink>
+                      <Link to={url} spy={true} smooth={true}>
+                        {name}
+                      </Link>
+                    </NavLink>
+                  </li>
+                ))}
+            </ol>
+          </StyledLinks>
+        )}
       </Nav>
     </StyledHeader>
   )

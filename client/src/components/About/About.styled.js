@@ -1,5 +1,22 @@
 import styled from 'styled-components'
 
+export const LinkSection = styled.div`
+  height: 152px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  a {
+    padding-left: 10px;
+    padding-right: 10px;
+
+    &:hover {
+      transform: scale(1.15);
+      transition: 0.15s;
+    }
+  }
+`
+
 export const AboutContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
