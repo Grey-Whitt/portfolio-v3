@@ -35,12 +35,14 @@ export const Project = styled.div`
 
   a:hover {
     text-decoration: underline;
+    cursor: pointer;
   }
 
   .ghIcon:hover {
     color: ${({ theme }) => theme.colors.accent};
     transform: scale(1.15);
     transition: 0.15s;
+    cursor: pointer;
   }
 
   .picContainer {
