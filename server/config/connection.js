@@ -5,8 +5,8 @@ dotenv.config()
 
 let sequelize
 
-if (process.env.JAWSDB_URL) {
-  sequelize = new Sequelize(process.env.JAWSDB_URL)
+if (process.env.HEROKU_POSTGRES_URI) {
+  sequelize = new Sequelize(process.env.HEROKU_POSTGRES_URI)
 } else {
   sequelize = new Sequelize(
     process.env.DB_NAME,

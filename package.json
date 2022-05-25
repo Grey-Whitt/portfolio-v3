@@ -7,9 +7,9 @@
   "scripts": {
     "start": "node server/server",
     "server": "nodemon server/server",
-    "client": "npm start --prefix client",
+    "client": "yarn --cwd client start",
     "dev": "concurrently \"yarn server\" \"yarn client\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false yarn add --cwd client && yarn run build --cwd client"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false yarn --cwd client install && yarn --cwd client build"
   },
   "repository": {
     "type": "git",
@@ -25,6 +25,7 @@
     "aws-sdk": "^2.1117.0",
     "concurrently": "^7.2.1",
     "cors": "^2.8.5",
+    "cwd": "^0.10.0",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "express-async-handler": "^1.2.0",
