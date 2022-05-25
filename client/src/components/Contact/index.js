@@ -90,7 +90,7 @@ const Contact = () => {
               type='text'
               id='name'
               required
-              placeholder='Name'
+              placeholder='John Doe'
               value={name}
               onChange={handleChange}
               onBlur={handleChange}
@@ -102,7 +102,7 @@ const Contact = () => {
               type='email'
               id='email'
               required
-              placeholder='Email'
+              placeholder='john@example.com'
               value={email}
               onChange={handleChange}
               onBlur={handleChange}

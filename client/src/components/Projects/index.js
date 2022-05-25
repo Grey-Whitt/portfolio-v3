@@ -1,48 +1,36 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { ProjectsContainer, Project, ButtonLink } from './Projects.styled'
 import { Center } from '../../styles'
 import { BsGithub } from 'react-icons/bs'
-
-const projects = [
-  {
-    title: 'Project 1',
-    description: 'lorem ipsum delor sit amet',
-    repo_link: 'https://github.com/Grey-Whitt/portfolio-v3',
-    deployed_link: 'https://github.com/Grey-Whitt',
-  },
-  {
-    title: 'Project 2',
-    description: 'lorem ipsum delor sit amet',
-    repo_link: 'https://github.com/Grey-Whitt/portfolio-v3',
-    deployed_link: 'https://github.com/Grey-Whitt',
-  },
-  {
-    title: 'Project 3',
-    description: 'lorem ipsum delor sit amet',
-    repo_link: 'https://github.com/Grey-Whitt/portfolio-v3',
-    deployed_link: 'https://github.com/Grey-Whitt',
-  },
-  {
-    title: 'Project 4',
-    description: 'lorem ipsum delor sit amet',
-    repo_link: 'https://github.com/Grey-Whitt/portfolio-v3',
-    deployed_link: 'https://github.com/Grey-Whitt',
-  },
-  {
-    title: 'Project 5',
-    description: 'lorem ipsum delor sit amet',
-    repo_link: 'https://github.com/Grey-Whitt/portfolio-v3',
-    deployed_link: 'https://github.com/Grey-Whitt',
-  },
-  {
-    title: 'Project 6',
-    description: 'lorem ipsum delor sit amet',
-    repo_link: 'https://github.com/Grey-Whitt/portfolio-v3',
-    deployed_link: 'https://github.com/Grey-Whitt',
-  },
-]
+import axios from 'axios'
 
 const Projects = () => {
+  const [projects, setProjects] = useState([])
+
+  const getImage = async (project) => {
+    const { data } = await axios.get(
+      `/api/image/image-${project.title.replaceAll(' ', '')}.png`
+    )
+
+    const url = data.key
+
+    project.imgUrl = url
+
+    setProjects([...projects, project])
+  }
+
+  const getProjects = async () => {
+    const { data } = await axios.get('/api/projects')
+
+    data.forEach((project) => {
+      getImage(project)
+    })
+  }
+
+  useEffect(() => {
+    getProjects()
+  }, [])
+
   return (
     <>
       <ProjectsContainer id='projects'>
@@ -50,24 +38,26 @@ const Projects = () => {
           <Project key={i}>
             <a
               className='grid1'
-              href={project.deployed_link}
+              href={project.deployedLink}
               target='_blank'
               rel='noreferrer'
             >
               <div className='picContainerBackground'>
                 <div className='picContainer'>
-                  <img src='/images/sampleproject.png' alt={project.title} />
+                  {project.imgUrl && (
+                    <img src={project.imgUrl} alt={project.title} />
+                  )}
                 </div>
               </div>
             </a>
             <h2 className='grid2'>
-              <a href={project.deployed_link} target='_blank' rel='noreferrer'>
+              <a href={project.deployedLink} target='_blank' rel='noreferrer'>
                 {project.title}
               </a>
             </h2>
             <a
               className='grid3'
-              href={project.repo_link}
+              href={project.repoLink}
               target='_blank'
               rel='noreferrer'
             >

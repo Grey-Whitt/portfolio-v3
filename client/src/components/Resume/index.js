@@ -1,29 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { ResumeContainer, ResumeLink } from './resume.styled'
 import { GoBrowser } from 'react-icons/go'
 import { BsTerminal } from 'react-icons/bs'
 
-const Resume = () => {
-  const frontEndSkills = [
-    'HTML',
-    'CSS',
-    'JavaScript',
-    'JQuery',
-    'React',
-    'Bootstrap',
-    'Handlebars',
-  ]
+const Resume = ({ profile }) => {
+  const [frontEndSkills, setFrontEndSkills] = useState([])
+  const [backEndSkills, setBackEndSkills] = useState([])
 
-  const backEndSkills = [
-    'APIs',
-    'Node',
-    'Express',
-    'MySQL, Sequelize',
-    'MongoDB, Mongoose',
-    'PWAs',
-    'OOP',
-    'MVC paradigm',
-  ]
+  useEffect(() => {
+    if (profile) {
+      profile.Skills.forEach((skill) => {
+        if (skill.type == 'frontend') {
+          setFrontEndSkills((state) => [...state, skill.skillName])
+        } else {
+          setBackEndSkills((state) => [...state, skill.skillName])
+        }
+      })
+    }
+  }, [profile])
 
   return (
     <>
