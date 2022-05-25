@@ -5,7 +5,7 @@ dotenv.config()
 
 let sequelize
 
-if (process.env.HEROKU_POSTGRES_URI) {
+if (process.env.DATABASE_URL) {
   sequelize = new Sequelize(process.env.DATABASE_URL, {
     dialectOptions: {
       ssl: {
