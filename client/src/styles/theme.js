@@ -1,10 +1,10 @@
 const theme = {
   colors: {
-    radicalRed: '#ff3d64',
-    greenCyan: '#339369',
-    coral: '#FF7E53',
-    seaGreen: '#3AFFCC',
-    charlestonGreen: '#1C292D',
+    grayWeb: '#7D7F89',
+    accent: '#FF7F11',
+    lightGray: '#D2D3D3',
+    davysGrey: '#555759',
+    jet: '#2D3032',
   },
 }
 

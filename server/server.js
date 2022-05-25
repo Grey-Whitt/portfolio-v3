@@ -4,8 +4,12 @@ import { notFound, errorHandler } from './middleware/errorMiddleware.js'
 import profileRoutes from './routes/profileRoutes.js'
 import projectRoutes from './routes/projectRoutes.js'
 import imageRoutes from './routes/imageRoutes.js'
+import contactRoutes from './routes/contactRoutes.js'
+import cors from 'cors'
 
 const app = express()
+
+app.use(cors())
 
 app.use(express.json())
 
@@ -14,6 +18,8 @@ app.use('/api/profile', profileRoutes)
 app.use('/api/projects', projectRoutes)
 
 app.use('/api/image', imageRoutes)
+
+app.use('/api/contact', contactRoutes)
 
 app.use(notFound)
 

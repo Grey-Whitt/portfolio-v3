@@ -7,15 +7,15 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background: ${({ theme }) => theme.colors.charlestonGreen};
-    color: hsl(192, 100%, 9%);
+    background: ${({ theme }) => theme.colors.lightGray};
+    color: ${({ theme }) => theme.colors.jet};
     font-size: 1.15em;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif !important;
     margin: 0;
   }
 
   p {
-    opacity: 0.6;
+    opacity: 0.9;
     line-height: 1.5;
   }
 
