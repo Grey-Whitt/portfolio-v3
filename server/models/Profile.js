@@ -27,12 +27,15 @@ Profile.init(
       type: DataTypes.STRING,
     },
     bio: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(2000),
     },
     github: {
       type: DataTypes.STRING,
     },
     linkedin: {
+      type: DataTypes.STRING,
+    },
+    resume: {
       type: DataTypes.STRING,
     },
     password: {

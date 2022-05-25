@@ -14,7 +14,9 @@ const getProfile = asyncHandler(async (req, res) => {
       ['phone_number', 'phoneNumber'],
       'location',
       'bio',
+      'linkedin',
       'github',
+      'resume',
       'password',
       'createdAt',
       'updatedAt',
@@ -54,6 +56,7 @@ const createProfile = asyncHandler(async (req, res) => {
     bio,
     github,
     linkedin,
+    resume,
     password,
   } = req.body
 
@@ -66,6 +69,7 @@ const createProfile = asyncHandler(async (req, res) => {
     bio,
     github,
     linkedin,
+    resume,
     password,
   })
 
@@ -79,6 +83,7 @@ const createProfile = asyncHandler(async (req, res) => {
     bio: profile.bio,
     github: profile.github,
     linkedin: profile.linkedin,
+    resume: profile.resume,
     password: profile.password,
     createdAt: profile.createdAt,
     updatedAt: profile.updatedAt,
