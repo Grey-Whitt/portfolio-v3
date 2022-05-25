@@ -4,51 +4,27 @@ import { Center } from '../../styles'
 import { BsGithub } from 'react-icons/bs'
 import axios from 'axios'
 
-// const projects = [
-//   {
-//     title: 'Project 1',
-//     description: 'lorem ipsum delor sit amet',
-//     repo_link: 'https://github.com/Grey-Whitt/portfolio-v3',
-//     deployed_link: 'https://github.com/Grey-Whitt',
-//   },
-//   {
-//     title: 'Project 2',
-//     description: 'lorem ipsum delor sit amet',
-//     repo_link: 'https://github.com/Grey-Whitt/portfolio-v3',
-//     deployed_link: 'https://github.com/Grey-Whitt',
-//   },
-//   {
-//     title: 'Project 3',
-//     description: 'lorem ipsum delor sit amet',
-//     repo_link: 'https://github.com/Grey-Whitt/portfolio-v3',
-//     deployed_link: 'https://github.com/Grey-Whitt',
-//   },
-//   {
-//     title: 'Project 4',
-//     description: 'lorem ipsum delor sit amet',
-//     repo_link: 'https://github.com/Grey-Whitt/portfolio-v3',
-//     deployed_link: 'https://github.com/Grey-Whitt',
-//   },
-//   {
-//     title: 'Project 5',
-//     description: 'lorem ipsum delor sit amet',
-//     repo_link: 'https://github.com/Grey-Whitt/portfolio-v3',
-//     deployed_link: 'https://github.com/Grey-Whitt',
-//   },
-//   {
-//     title: 'Project 6',
-//     description: 'lorem ipsum delor sit amet',
-//     repo_link: 'https://github.com/Grey-Whitt/portfolio-v3',
-//     deployed_link: 'https://github.com/Grey-Whitt',
-//   },
-// ]
-
 const Projects = () => {
   const [projects, setProjects] = useState([])
+
+  const getImage = async (project) => {
+    const { data } = await axios.get(
+      `/api/image/image-${project.title.replaceAll(' ', '')}.png`
+    )
+
+    const url = data.key
+
+    project.imgUrl = url
+
+    setProjects([...projects, project])
+  }
+
   const getProjects = async () => {
     const { data } = await axios.get('/api/projects')
-    setProjects(data)
-    console.log(projects)
+
+    data.forEach((project) => {
+      getImage(project)
+    })
   }
 
   useEffect(() => {
@@ -68,7 +44,9 @@ const Projects = () => {
             >
               <div className='picContainerBackground'>
                 <div className='picContainer'>
-                  <img src='/images/sampleproject.png' alt={project.title} />
+                  {project.imgUrl && (
+                    <img src={project.imgUrl} alt={project.title} />
+                  )}
                 </div>
               </div>
             </a>

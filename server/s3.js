@@ -28,13 +28,16 @@ const uploadFile = (file) => {
 }
 
 // downloads from s3
-const getFileStream = (fileKey) => {
-  const downloadParams = {
+const getFileStream = async (fileKey) => {
+  const params = {
     Key: fileKey,
     Bucket: bucketName,
   }
 
-  return s3.getObject(downloadParams).createReadStream()
+  // return s3.getObject(downloadParams).createReadStream()
+  const url = await s3.getSignedUrlPromise('getObject', params)
+
+  return url
 }
 
 export { uploadFile, getFileStream }

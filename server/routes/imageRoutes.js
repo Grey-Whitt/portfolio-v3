@@ -14,10 +14,7 @@ const storage = multer.diskStorage({
     cb(null, 'uploads/')
   },
   filename(req, file, cb) {
-    cb(
-      null,
-      `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`
-    )
+    cb(null, `${file.fieldname}-${file.originalname}`)
   },
 })
 
@@ -53,11 +50,15 @@ const uploadImage = asyncHandler(async (req, res) => {
   }
 })
 
-const getImage = asyncHandler((req, res) => {
+const getImage = asyncHandler(async (req, res) => {
   const key = req.params.key
-  const readStream = getFileStream(key)
+  const img = await getFileStream(key)
 
-  readStream.pipe(res)
+  if (img) {
+    res.send({ key: `${img}` })
+  } else {
+    res.status(400)
+  }
 })
 
 router.route('/').post(upload.single('image'), uploadImage)
