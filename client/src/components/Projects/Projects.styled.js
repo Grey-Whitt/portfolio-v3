@@ -72,6 +72,7 @@ export const Project = styled.div`
   img {
     padding: 10px;
     border-radius: 20px;
+    image-rendering: -webkit-optimize-contrast;
   }
 
   .grid1 {

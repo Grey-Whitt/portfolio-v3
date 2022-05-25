@@ -38,7 +38,7 @@ const Projects = () => {
           <Project key={i}>
             <a
               className='grid1'
-              href={project.deployed_link}
+              href={project.deployedLink}
               target='_blank'
               rel='noreferrer'
             >
@@ -51,13 +51,13 @@ const Projects = () => {
               </div>
             </a>
             <h2 className='grid2'>
-              <a href={project.deployed_link} target='_blank' rel='noreferrer'>
+              <a href={project.deployedLink} target='_blank' rel='noreferrer'>
                 {project.title}
               </a>
             </h2>
             <a
               className='grid3'
-              href={project.repo_link}
+              href={project.repoLink}
               target='_blank'
               rel='noreferrer'
             >
