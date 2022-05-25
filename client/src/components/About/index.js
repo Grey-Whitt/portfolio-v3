@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   AboutContainer,
   AboutLeft,
@@ -8,15 +8,32 @@ import {
 } from './About.styled'
 import { Section } from '../../styles/Container.styled'
 import { FiGithub, FiLinkedin } from 'react-icons/fi'
+import axios from 'axios'
 
 const About = ({ profile }) => {
+  const [profilePicture, setProfilePicture] = useState('')
+
+  const getProfilePicture = async () => {
+    const { data } = await axios.get(`/api/image/image-greyWhitt.png`)
+    setProfilePicture(data.key)
+  }
+
+  useEffect(() => {
+    getProfilePicture()
+  }, [])
+
   return (
     <Section>
       <AboutContainer id='about'>
         <AboutLeft>
           <div className='picContainer'>
             <div className='orangeBox'>
-              <Picture src='./images/IMG-0490.JPG' />
+              {profilePicture && (
+                <Picture
+                  src={profilePicture}
+                  alt='Portrait of myself in field'
+                />
+              )}
             </div>
           </div>
         </AboutLeft>
