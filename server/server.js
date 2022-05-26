@@ -22,16 +22,7 @@ app.use('/api/image', imageRoutes)
 
 app.use('/api/contact', contactRoutes)
 
-app.use(notFound)
-
-app.use(errorHandler)
-
 const PORT = process.env.PORT || 5000
-
-// turn on connection to db and server
-sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, console.log(`Server running on port ${PORT}`))
-})
 
 const __dirname = path.resolve()
 
@@ -48,3 +39,12 @@ if (process.env.NODE_ENV === 'production') {
     res.send('API is running...')
   })
 }
+
+app.use(notFound)
+
+app.use(errorHandler)
+
+// turn on connection to db and server
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, console.log(`Server running on port ${PORT}`))
+})
