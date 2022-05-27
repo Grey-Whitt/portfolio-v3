@@ -126,7 +126,7 @@ Sequelize
 Multer  
 AWS S3  
 Nodemailer  
-Deployed with Heroku
+Deployed with Heroku  
 Database hosted on Heroku Postgres
 
 ## Questions
