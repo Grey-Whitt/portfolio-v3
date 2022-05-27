@@ -2,7 +2,9 @@
 
 ## Description:
 
-[www.greywhitt.com](www.greywhitt.com) 
+[www.greywhitt.com](www.greywhitt.com)
+
+This is the third iteration of my portfolio featuring a fully custom front-end, back-end, and AWS S3 image hosting. The front-end was built in react, featuring custom styles using [styled-components](https://styled-components.com/). I built an express server to serve data to my front-end so I can change, add, and update all of the data and images you see without having to take the site offline.
 
 # Table of Contents
 
@@ -20,7 +22,7 @@
 
 - [My Github Profile](https://github.com/Grey-Whitt)
 
-- [This Repository]([https://github.com/Grey-Whitt/mern-tech-shop](https://github.com/Grey-Whitt/portfolio-v3))
+- [This Repository](https://github.com/Grey-Whitt/portfolio-v3)
 
 - [Deployed Application](www.greywhitt.com)
 
@@ -28,20 +30,32 @@
 
 ---
 
+Here is an example of what a profile would look like when being uploaded via Postman.  
+![Profile JSON](./images/profile.png)
 
-You can find and edit the colors in client/src/styles/theme.js
-| Color          | Hex                                                                |
-| -------------- | ------------------------------------------------------------------ |
-| grayWeb        | ![#7d7f89](https://via.placeholder.com/10/7d7f89?text=+) `#7d7f89` |
-| lightGray      | ![#d2d3d3](https://via.placeholder.com/10/d2d3d3?text=+) `#d2d3d3` |
-| davysGrey      | ![#555759](https://via.placeholder.com/10/555759?text=+) `#555759` |
-| jet            | ![#2d3032](https://via.placeholder.com/10/2d3032?text=+) `#2d3032` |
-| accent         | ![#ff7f11](https://via.placeholder.com/10/FF7F11?text=+) `#ff7f11` |
+This is what it looks like to upload a skill to be displayed in the Proficiencies section. Define the skill, type of skill ("frontend" or "backend"), and which profile it belongs to.  
+![Skill JSON](./images/skill.png)
 
+This is what a project looks like.  
+![Project JSON](./images/project.png)
+
+Lastly, This is how you would upload an image to the AWS S3 bucket, using form-data, setting the key to image, and selecting the image you want to upload. I have this set up to only accept PNGs.  
+![Image upload](./images/image.png)
 
 ## Usage
 
 ---
+
+### Color Palette
+
+You can find and edit the colors in client/src/styles/theme.js
+| Color | Hex |
+| -------------- | ------------------------------------------------------------------ |
+| grayWeb | ![#7d7f89](./images/7d7f89.png) `#7d7f89` |
+| lightGray | ![#d2d3d3](./images/d2d3d3.png) `#d2d3d3` |
+| davysGrey | ![#555759](./images/555759.png) `#555759` |
+| jet | ![#2d3032](./images/2d3032.png) `#2d3032` |
+| accent | ![#ff7f11](./images/FF7F11.png) `#ff7f11` |
 
 ### ES Modules in Node
 
@@ -104,10 +118,10 @@ There is a Heroku postbuild script, so if you push to Heroku, no need to build m
 ---
 
 React  
-Node.js    
+Node.js  
 React Router v6  
-SCSS 
-Postgres 
+SCSS
+Postgres
 Sequelize  
 Multer  
 AWS S3  
@@ -125,7 +139,7 @@ If you have any questions feel free to email me or find me on LinkedIn
 
 [My LinkedIn](https://www.linkedin.com/in/grey-whittenberger)
 
-[www.greywhitt.com](www.greywhitt.com) 
+[www.greywhitt.com](www.greywhitt.com)
 
 ## Contributing:
 
