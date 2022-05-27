@@ -6,7 +6,7 @@
 
 This is the third version of my portfolio featuring a fully custom front-end, back-end, and AWS S3 image hosting. The front-end was built in react, featuring custom styles using [styled-components](https://styled-components.com/). I built an express server to serve data to my front-end so I can change, add, and update all of the data and images you see without having to take the site offline.
 
-Checkout the [first](https://grey-whitt.github.io) and [second](https://github.com/Grey-Whitt/react-portfolio) versions.
+Checkout the [first](https://github.com/Grey-Whitt/Grey-Whitt.github.io) and [second](https://github.com/Grey-Whitt/react-portfolio) versions.
 
 # Table of Contents
 
