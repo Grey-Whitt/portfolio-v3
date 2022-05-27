@@ -120,8 +120,8 @@ There is a Heroku postbuild script, so if you push to Heroku, no need to build m
 React  
 Node.js  
 React Router v6  
-SCSS
-Postgres
+SCSS  
+Postgres  
 Sequelize  
 Multer  
 AWS S3  
