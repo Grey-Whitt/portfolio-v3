@@ -32,11 +32,11 @@
 You can find and edit the colors in client/src/styles/theme.js
 | Color          | Hex                                                                |
 | -------------- | ------------------------------------------------------------------ |
-| grayWeb        | ![#7d7f89](https://via.placeholder.com/10/7d7f89) `#7d7f89` |
-| lightGray      | ![#d2d3d3](https://via.placeholder.com/10/d2d3d3) `#d2d3d3` |
-| davysGrey      | ![#555759](https://via.placeholder.com/10/555759) `#555759` |
-| jet            | ![#2d3032](https://via.placeholder.com/10/2d3032) `#2d3032` |
-| accent         | ![#ff7f11](https://via.placeholder.com/10/FF7F11) `#ff7f11` |
+| grayWeb        | ![#7d7f89](https://via.placeholder.com/10/7d7f89?text=+) `#7d7f89` |
+| lightGray      | ![#d2d3d3](https://via.placeholder.com/10/d2d3d3?text=+) `#d2d3d3` |
+| davysGrey      | ![#555759](https://via.placeholder.com/10/555759?text=+) `#555759` |
+| jet            | ![#2d3032](https://via.placeholder.com/10/2d3032?text=+) `#2d3032` |
+| accent         | ![#ff7f11](https://via.placeholder.com/10/FF7F11?text=+) `#ff7f11` |
 
 
 ## Usage
