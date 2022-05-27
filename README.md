@@ -32,16 +32,71 @@ Checkout the [first](https://github.com/Grey-Whitt/Grey-Whitt.github.io) and [se
 
 ---
 
-Here is an example of what a profile would look like when being uploaded via Postman.  
-![Profile JSON](./images/profile.png)
+This is and example of a response to the GET /api/profile route.
+```
+{
+    "id": 1,
+    "firstName": "Grey",
+    "lastName": "Whittenberger",
+    "email": "greywhitt@gmail.com",
+    "phoneNumber": "5125396139",
+    "location": "Austin, TX",
+    "bio": "lorem ipsum delor sit amet...",
+    "linkedin": "https://www.linkedin.com/in/grey-whittenberger/",
+    "github": "https://github.com/Grey-Whitt",
+    "resume": "https://docs.google.com/document/d/1IPc3pfCwKi05HY9mwiKjdBnhO4lMVlLw-D6PNHYssdU/preview",
+    "createdAt": "2022-05-26T03:20:42.294Z",
+    "updatedAt": "2022-05-26T03:20:42.294Z",
+    "Skills": [
+        {
+            "skillName": "Node",
+            "type": "backend",
+            "profileId": 1
+        },
+       
+        {
+            "skillName": "React",
+            "type": "frontend",
+            "profileId": 1
+        },
+    ]
+}
+```   
+  
+This is what a POST request to /api/skills looks like 
+```
+// Body of request 
+{
+    "skillName": "CSS",
+    "type": "frontend",
+    "profileId": 1
+}
 
-This is what it looks like to upload a skill to be displayed in the Proficiencies section. Define the skill, type of skill ("frontend" or "backend"), and which profile it belongs to.  
-![Skill JSON](./images/skill.png)
 
-This is what a project looks like.  
-![Project JSON](./images/project.png)
+// Returned data
+{
+    "id": 16,
+    "skill_name": "CSS",
+    "type": "frontend",
+    "profile_id": 1,
+    "updatedAt": "2022-05-27T00:19:32.775Z",
+    "createdAt": "2022-05-27T00:19:32.775Z"
+}
 
-Lastly, This is how you would upload an image to the AWS S3 bucket, using form-data, setting the key to image, and selecting the image you want to upload. I have this set up to only accept PNGs.  
+```
+  
+This is an example of a POST to /api/projects
+```
+{
+    "title": "Tech Shop",
+    "description": "TechShop is an ecommerce website using the MERN stack and Redux for state management.",
+    "deployedLink": "https://merntechshop.herokuapp.com/",
+    "repoLink": "https://github.com/Grey-Whitt/mern-tech-shop"
+}
+
+```
+
+Lastly, This is how you would upload an image in Postman to the AWS S3 bucket, using form-data, setting the key to 'image", and selecting the image you want to upload. I have this set up to only accept PNGs.  
 ![Image upload](./images/image.png)
 
 ## Usage
