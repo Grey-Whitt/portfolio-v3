@@ -10,7 +10,7 @@ const Resume = ({ profile }) => {
   useEffect(() => {
     if (profile) {
       profile.Skills.forEach((skill) => {
-        if (skill.type == 'frontend') {
+        if (skill.type === 'frontend') {
           setFrontEndSkills((state) => [...state, skill.skillName])
         } else {
           setBackEndSkills((state) => [...state, skill.skillName])
