@@ -22,6 +22,7 @@ const Contact = () => {
       setErrorMessage(`${e.target.id} is required.`)
     } else {
       setErrorMessage('')
+      setFormState({ ...formState, [e.target.id]: e.target.value })
     }
 
     if (!errorMessage) {

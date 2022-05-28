@@ -16,7 +16,7 @@ const Projects = () => {
 
     project.imgUrl = url
 
-    setProjects([...projects, project])
+    setProjects((state) => [...state, project])
   }
 
   const getProjects = async () => {
