@@ -2,7 +2,7 @@
 
 ## Description:
 
-[www.greywhitt.com](www.greywhitt.com)
+[www.greywhitt.com](https://www.greywhitt.com/)
 
 This is the third version of my portfolio featuring a fully custom front-end, back-end, and AWS S3 image hosting. The front-end was built in react, featuring custom styles using [styled-components](https://styled-components.com/). I built an express server to serve data from my Postgres database so I can change, add, and update all of the text and images you see without having to take the site offline.
 
