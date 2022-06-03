@@ -1,6 +1,8 @@
 import React from 'react'
 import { StyledHeader, StyledLinks, Nav, Logo, NavLink } from './Header.styled'
 import { Link } from 'react-scroll'
+import { Link as DomLink, useLocation } from 'react-router-dom'
+
 const navLinks = [
   {
     name: 'About',
@@ -21,20 +23,17 @@ const navLinks = [
 ]
 
 const Header = () => {
-  let homeScreen = true
+  const location = useLocation()
 
-  if (document.location.pathname !== '/') {
-    homeScreen = false
-  }
   return (
     <StyledHeader>
       <Logo>
-        <a className='g' href='/'>
+        <DomLink className='g' to='/'>
           <h1>G</h1>
-        </a>
+        </DomLink>
       </Logo>
       <Nav>
-        {homeScreen && (
+        {location.pathname === '/' && (
           <StyledLinks>
             <ol>
               {navLinks &&

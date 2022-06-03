@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { ProjectsContainer, Project, ButtonLink } from './Projects.styled'
 import { Center } from '../../styles'
 import { BsGithub } from 'react-icons/bs'
@@ -68,8 +69,10 @@ const Projects = () => {
         ))}
       </ProjectsContainer>
       <Center>
-        <ButtonLink href='/moreprojects'>
-          <button className='button'>More Projects</button>
+        <ButtonLink>
+          <Link to='/moreprojects'>
+            <button className='button'>More Projects</button>
+          </Link>
         </ButtonLink>
       </Center>
     </>

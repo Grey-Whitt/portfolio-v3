@@ -97,7 +97,7 @@ export const Project = styled.div`
   }
 `
 
-export const ButtonLink = styled.a`
+export const ButtonLink = styled.div`
   margin-top: 3rem;
 
   // Button style from getcssscan.com
