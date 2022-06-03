@@ -68,7 +68,7 @@ const Projects = () => {
         ))}
       </ProjectsContainer>
       <Center>
-        <ButtonLink href='/moreprojects' target='_blank' rel='noreferrer'>
+        <ButtonLink href='/moreprojects'>
           <button className='button'>More Projects</button>
         </ButtonLink>
       </Center>
