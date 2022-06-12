@@ -28,6 +28,15 @@ const __dirname = path.resolve()
 
 if (process.env.NODE_ENV === 'production') {
   console.log('In production mode')
+
+  app.use((req, res, next) => {
+    if (req.header('x-forwarded-proto') !== 'https') {
+      res.redirect(`https://${req.header('host')}${req.url}`)
+    } else {
+      next()
+    }
+  })
+
   app.use(express.static(path.join(__dirname, '/client/build')))
 
   app.get('*', (req, res) =>
